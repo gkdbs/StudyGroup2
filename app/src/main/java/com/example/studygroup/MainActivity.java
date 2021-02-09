@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         viewPager = findViewById(R.id.VP);
+        adapter = new Adapter(this);
+        viewPager.setAdapter(adapter);
 
     }
 }

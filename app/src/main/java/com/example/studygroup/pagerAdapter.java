@@ -37,9 +37,7 @@ class Adapter extends PagerAdapter {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.activity_pager_adapter, container, false);
         ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
-        TextView textView = (TextView) v.findViewById(R.id.textView);
         imageView.setImageResource(images[position]);
-        textView.setText((position+1)+"번째 이미지입니다.");
         container.addView(v);
         return v;
 
