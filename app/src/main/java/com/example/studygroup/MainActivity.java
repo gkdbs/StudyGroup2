@@ -16,13 +16,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<Integer> imgIds= new ArrayList<Integer>();
+    ArrayList<Integer> imgIds = new ArrayList<Integer>();
     MyAdapter adapter;
     ViewPager Pager;
 
     BottomNavigationView bnv;
     FragmentManager fragmentManager;
-    Fragment[] fragments= new Fragment[4];
+    Fragment[] fragments = new Fragment[4];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +36,18 @@ public class MainActivity extends AppCompatActivity {
         imgIds.add(R.drawable.studygroup05);
 
 
-
-        Pager= findViewById(R.id.pager);
-        adapter= new MyAdapter(this, imgIds);
+        Pager = findViewById(R.id.pager);
+        adapter = new MyAdapter(this, imgIds);
         Pager.setAdapter(adapter);
 
-        fragments[0]= new Tab1Fragment();
-        fragments[1]= new Tab2Fragment();
-        fragments[2]= new Tab3Fragment();
-        fragments[3]= new Tab3Fragment();
+        fragments[0] = new Tab1Fragment();
+        fragments[1] = new Tab2Fragment();
+        fragments[2] = new Tab3Fragment();
+        fragments[3] = new Tab3Fragment();
 
-        fragmentManager= getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
 
-        FragmentTransaction tran= fragmentManager.beginTransaction();
+        FragmentTransaction tran = fragmentManager.beginTransaction();
         tran.add(R.id.container, fragments[0]);
         tran.add(R.id.container, fragments[1]);
         tran.add(R.id.container, fragments[2]);
@@ -59,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
         tran.hide(fragments[3]);
         tran.commit();
 
-        bnv= findViewById(R.id.bnv);
+        bnv = findViewById(R.id.bnv);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                FragmentTransaction tran= fragmentManager.beginTransaction();
+                FragmentTransaction tran = fragmentManager.beginTransaction();
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.bnv_home:
                         tran.show(fragments[0]);
                         tran.hide(fragments[1]);
@@ -103,20 +102,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
-
-
-
 
 
     public void clickPrev(View view) {
-        int index= Pager.getCurrentItem()-1;
-        Pager.setCurrentItem(index,true);
+        int index = Pager.getCurrentItem() - 1;
+        Pager.setCurrentItem(index, true);
     }
 
     public void clickNext(View view) {
-        int index= Pager.getCurrentItem()+1;
+        int index = Pager.getCurrentItem() + 1;
         Pager.setCurrentItem(index, true);
     }
 
@@ -131,3 +126,4 @@ public class MainActivity extends AppCompatActivity {
     public void click_search(View view) {
 
     }
+}
