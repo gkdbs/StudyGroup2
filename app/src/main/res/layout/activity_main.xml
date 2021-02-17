@@ -102,11 +102,15 @@
         app:labelVisibilityMode="labeled"
         android:layout_alignParentBottom="true"/>
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_below="@+id/pager"
+        android:layout_above="@+id/bnv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"/>
 
-    </ScrollView>
 
 </RelativeLayout>
+
+
 
