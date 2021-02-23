@@ -2,20 +2,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.studygroup">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".MykakaoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyGroup">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Searchbtn"></activity>
+        <activity android:name=".register" />
+        <activity android:name=".login" />
+        <activity android:name=".MainActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data
+                android:host="oauth"
+                android:scheme="kakaoaebddd0770eaf1d1d9fc45cc876ef081" />
+        </intent-filter>
+
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"></activity>
     </application>
 
 </manifest>

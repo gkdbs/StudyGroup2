@@ -38,12 +38,12 @@
         android:textStyle="bold"/>
 
     <Button
-        android:id="@+id/btn_join"
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="회원가입"
         android:textSize="24dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
@@ -61,16 +61,12 @@
         android:background="#FFaaaaaa"
         android:layout_marginBottom="20dp"/>
 
-
-
-    <Button
-        android:layout_width="match_parent"
+    <ImageButton
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="네이버 로그인"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:backgroundTint="#1DDB16"/>
-
-
+        android:layout_gravity="center"
+        android:onClick="click_kakaoLogin"
+        android:src="@drawable/kakao_login_medium_wide" />
 
 </LinearLayout>
