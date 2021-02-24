@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -127,6 +128,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void click_search(View view) {
+        startActivity(new Intent(this,Searchbtn.class));
+
+    }
+
+    public void clickplace(View view) {
+        startActivity(new Intent(this, com.example.studygroup.KakaoMap.class));
 
     }
 }
