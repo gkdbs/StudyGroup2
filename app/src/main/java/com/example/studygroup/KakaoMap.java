@@ -1,6 +1,9 @@
 package com.example.studygroup;
 
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RelativeLayout;
@@ -14,6 +17,8 @@ import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
 public class KakaoMap extends AppCompatActivity {
+
+
 
     MapView mapView;
 

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kakao.util.maps.helper.Utility;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String keyHash = Utility.getKeyHash(this);
+
 
         bnv = findViewById(R.id.bnv);
         getSupportFragmentManager().beginTransaction().add(R.id.main_frame, new Tab1Fragment()).commit();

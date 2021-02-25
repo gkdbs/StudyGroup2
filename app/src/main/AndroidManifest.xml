@@ -38,9 +38,11 @@
 
                 <data
                     android:host="oauth"
-                    android:scheme="ff34ee52cc41a6db11875d54287511b5" />
+                    android:scheme="aebddd0770eaf1d1d9fc45cc876ef081" />
             </intent-filter>
         </activity>
+        <meta-data android:name="com.kakao.sdk.AppKey"
+            android:value="LcE1ccKjibElDf/XTNGUBjXoSic="/>
     </application>
 
 </manifest>
