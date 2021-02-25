@@ -18,13 +18,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    BottomNavigationView bnv;
 
     ArrayList<Integer> imgIds = new ArrayList<Integer>();
     MyAdapter adapter;
     ViewPager Pager;
 
-    BottomNavigationView bnv;
     FragmentManager fragmentManager;
     Fragment[] fragments = new Fragment[4];
 
@@ -32,6 +31,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bnv = findViewById(R.id.bnv);
+        getSupportFragmentManager().beginTransaction().add(R.id.main_frame, new Tab1Fragment()).commit();
+
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.item_bnv_home:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new Tab1Fragment()).commit();
+                        break;
+                    case R.id.item_bnv_like:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new Tab2Fragment()).commit();
+                        break;
+                    case R.id.item_bnv_input:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new Tab3Fragment()).commit();
+                        break;
+                    case R.id.item_bnv_notification:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new Tab4Fragment()).commit();
+                        break;
+                }
+                return true;
+            }
+        });
+
 
         imgIds.add(R.drawable.studygroup01);
         imgIds.add(R.drawable.studygroup02);
@@ -62,49 +87,6 @@ public class MainActivity extends AppCompatActivity {
         tran.hide(fragments[3]);
         tran.commit();
 
-        bnv = findViewById(R.id.bnv);
-        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                FragmentTransaction tran = fragmentManager.beginTransaction();
-
-                switch (item.getItemId()) {
-                    case R.id.bnv_home:
-                        tran.show(fragments[0]);
-                        tran.hide(fragments[1]);
-                        tran.hide(fragments[2]);
-                        tran.hide(fragments[3]);
-                        break;
-
-                    case R.id.bnv_like:
-                        tran.hide(fragments[0]);
-                        tran.show(fragments[1]);
-                        tran.hide(fragments[2]);
-                        tran.hide(fragments[3]);
-                        break;
-
-                    case R.id.bnv_input:
-                        tran.hide(fragments[0]);
-                        tran.hide(fragments[1]);
-                        tran.show(fragments[2]);
-                        tran.hide(fragments[3]);
-                        break;
-
-                    case R.id.bnv_notification:
-                        tran.hide(fragments[0]);
-                        tran.hide(fragments[1]);
-                        tran.hide(fragments[2]);
-                        tran.show(fragments[3]);
-                        break;
-                }
-
-                tran.commit();
-
-                return true;
-            }
-        });
-
 
     }
 
@@ -129,10 +111,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void click_search(View view) {
         startActivity(new Intent(this,Searchbtn.class));
-
     }
 
-    public void clickplace(View view) {
-        startActivity(new Intent(this, KakaoMap.class));
+    public void click_place_btn(View view) {
+        startActivity(new Intent(this,KakaoMap.class));
     }
 }

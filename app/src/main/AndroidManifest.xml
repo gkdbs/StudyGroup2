@@ -35,9 +35,10 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- 네이티브 앱키는 내 어플리캐이션 > 앱설정 > 여약정보 -->
                 <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
+
                 <data
                     android:host="oauth"
-                    android:scheme="fb7c4f32b8ff6dfde087a0dc171301d0" />
+                    android:scheme="ff34ee52cc41a6db11875d54287511b5" />
             </intent-filter>
         </activity>
     </application>
