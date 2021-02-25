@@ -12,7 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyGroup"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Register"/>
+
+        <activity android:name=".login"/>
+        <activity android:name=".KakaoLogin"/>
+        <activity android:name=".Study" />
+        <activity android:name=".Register" />
         <activity android:name=".Searchbtn" />
         <activity android:name=".KakaoMap" />
         <activity android:name=".MainActivity">
