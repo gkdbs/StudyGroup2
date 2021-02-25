@@ -13,19 +13,20 @@
         android:theme="@style/Theme.StudyGroup"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".login"/>
-        <activity android:name=".KakaoLogin"/>
+        <activity android:name=".login" />
+        <activity android:name=".KakaoLogin" />
         <activity android:name=".Study" />
         <activity android:name=".Register" />
         <activity android:name=".Searchbtn" />
         <activity android:name=".KakaoMap" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".intro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- 카카오 로그인 요청결과를 받기위한 REdirtion URL 용의 액티비티 : 카카오라이브러리에 만들어져 있는 -->
+    </activity> <!-- 카카오 로그인 요청결과를 받기위한 REdirtion URL 용의 액티비티 : 카카오라이브러리에 만들어져 있는 -->
         <!-- 로그인 입력창이 있는 액티비티 (웹뷰로 보여주고 있는) -->
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
@@ -41,8 +42,10 @@
                     android:scheme="aebddd0770eaf1d1d9fc45cc876ef081" />
             </intent-filter>
         </activity>
-        <meta-data android:name="com.kakao.sdk.AppKey"
-            android:value="LcE1ccKjibElDf/XTNGUBjXoSic="/>
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="LcE1ccKjibElDf/XTNGUBjXoSic=" />
     </application>
 
 </manifest>

@@ -124,10 +124,11 @@ public class Register extends AppCompatActivity {
     }
 
     public void clickbtn_validateButton(View view) {
+        startActivity(new Intent(this,RegisterRequest.class));
     }
 
 
     public void click_register(View view) {
-
+        startActivity(new Intent(this,MainActivity.class));
     }
 }

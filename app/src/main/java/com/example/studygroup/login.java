@@ -78,4 +78,8 @@ public class login extends AppCompatActivity {
     public void click_kakaoLogin(View view) {
         startActivity(new Intent(this, KakaoLogin.class));
     }
+
+    public void click_Loginbtn(View view) {
+
+    }
 }

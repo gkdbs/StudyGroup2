@@ -54,7 +54,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="  패스워드"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:background="@drawable/bg_gray"/>
 
         <EditText
@@ -64,7 +64,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="  패스워드 확인"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:background="@drawable/bg_gray"/>
 
         <TextView
@@ -92,7 +92,6 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="  이름"
-            android:inputType="textPersonName"
             android:background="@drawable/bg_gray"/>
 
 
