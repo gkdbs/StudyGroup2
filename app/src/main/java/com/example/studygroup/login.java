@@ -18,38 +18,38 @@ import org.json.JSONObject;
 
 public class login extends AppCompatActivity {
     private EditText et_id, et_pass;
-    private Button btn_login, btn_register;
+    private Button btn_login,btn_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        et_id = findViewById(R.id.et_id);
-        et_pass = findViewById(R.id.et_pass);
-        btn_login = findViewById(R.id.btn_login);
-        btn_register = findViewById(R.id.btn_register);
+        et_id=findViewById(R.id.et_id);
+        et_pass=findViewById(R.id.et_pass);
+        btn_login=findViewById(R.id.btn_login);
+        btn_register=findViewById(R.id.btn_register);
 
         btn_register.setOnClickListener(new View.OnClickListener() {//회원가입 버튼을 클릭시 수행
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(login.this, Register.class);
+                Intent intent=new Intent(login.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String userID = et_id.getText().toString();
-                String userPass = et_pass.getText().toString();
+                final String userID=et_id.getText().toString();
+                String userPass=et_pass.getText().toString();
 
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                Response.Listener<String> responseListener=new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jasonObject = new JSONObject(response);
-                            boolean success = jasonObject.getBoolean("success");
+                            JSONObject jasonObject=new JSONObject(response);
+                            boolean success=jasonObject.getBoolean("success");
                             if (success) {//회원등록 성공한 경우
                                 String userID = jasonObject.getString("userID");
                                 String userPass = jasonObject.getString("userPassword");
@@ -58,7 +58,10 @@ public class login extends AppCompatActivity {
                                 intent.putExtra("log", "User");
                                 intent.putExtra("userID", userID);
                                 startActivity(intent);
-                            } else {//회원등록 실패한 경우
+                            }
+
+
+                            else{//회원등록 실패한 경우
                                 Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
                                 return;
 
@@ -68,18 +71,14 @@ public class login extends AppCompatActivity {
                         }
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(login.this);
+                LoginRequest loginRequest=new LoginRequest(userID,userPass,responseListener);
+                RequestQueue queue= Volley.newRequestQueue(login.this);
                 queue.add(loginRequest);
             }
         });
     }
 
     public void click_kakaoLogin(View view) {
-        startActivity(new Intent(this, KakaoLogin.class));
-    }
-
-    public void click_Loginbtn(View view) {
 
     }
 }

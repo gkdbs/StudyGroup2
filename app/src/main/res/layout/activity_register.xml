@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".RegisterActivity">
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -82,7 +82,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이름"
+            android:text="이름 / 나이"
             android:layout_marginTop="4dp"/>
 
         <EditText
@@ -113,8 +113,7 @@
             android:layout_marginTop="20dp"
             android:text="  회원가입"
             android:textColor="@color/white"
-            android:backgroundTint="@color/purple_500"
-            android:onClick="click_register"/>
+            android:backgroundTint="@color/purple_500"/>
 
 
     </LinearLayout>

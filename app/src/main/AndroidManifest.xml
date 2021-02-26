@@ -3,6 +3,7 @@
     package="com.example.studygroup">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,7 @@
         <activity android:name=".login" />
         <activity android:name=".KakaoLogin" />
         <activity android:name=".Study" />
-        <activity android:name=".Register" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".Searchbtn" />
         <activity android:name=".KakaoMap" />
         <activity android:name=".MainActivity"/>
@@ -40,7 +41,9 @@
                 <data
                     android:host="oauth"
                     android:scheme="aebddd0770eaf1d1d9fc45cc876ef081" />
+
             </intent-filter>
+
         </activity>
 
         <meta-data

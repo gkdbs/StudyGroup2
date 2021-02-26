@@ -19,8 +19,4 @@ public class intro extends AppCompatActivity {
         finish();
     }
 
-    public void click_main(View view) {
-        startActivity(new Intent(this,MainActivity.class));
-        finish();
-    }
 }

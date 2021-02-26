@@ -40,15 +40,6 @@
             android:textColor="#D1B2FF"
             android:layout_gravity="center"
             android:onClick="click_intro_login"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="메인화면으로 가기"
-            android:textColor="#D1B2FF"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            android:onClick="click_main"/>
 
 
 
