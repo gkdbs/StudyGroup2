@@ -43,8 +43,27 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //firebase
+    implementation 'com.google.firebase:firebase-storage:17.0.0'
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
+    implementation 'com.google.firebase:firebase-database:17.0.0'
+    implementation 'com.google.firebase:firebase-firestore:17.1.2'
+
+
 
     implementation files('libs/libDaumMapAndroid.jar')
+
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    //파이어베이스
+    implementation 'com.google.firebase:firebase-core:16.0.9'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    /*anko라이브러리*/
+    //implementation "org.jetbrains.anko:anko:$anko_version"
+
+}
 
     dependencies {
         implementation "com.kakao.sdk:v2-user:2.3.0" // 카카오 로그인
@@ -52,4 +71,3 @@ dependencies {
 
     }
 
-}

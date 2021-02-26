@@ -15,7 +15,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+//https://youngest-programming.tistory.com/93 여기서 보고하자
 public class RegisterActivity extends AppCompatActivity {
     private EditText et_id, et_pass, et_name, et_age,et_passck;
     private Button btn_register,validateButton;

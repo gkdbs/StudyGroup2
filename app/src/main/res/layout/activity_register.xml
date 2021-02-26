@@ -43,8 +43,7 @@
                 android:text="중복확인"
                 android:layout_marginLeft="24dp"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/purple_500"
-                android:onClick="clickbtn_validateButton"/>
+                android:backgroundTint="@color/purple_500" />
         </LinearLayout>
 
         <EditText
@@ -92,6 +91,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="  이름"
+            android:inputType="textPersonName"
             android:background="@drawable/bg_gray"/>
 
 
