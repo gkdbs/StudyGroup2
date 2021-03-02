@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "624033738061",
+    "project_id": "studygroup-fb",
+    "storage_bucket": "studygroup-fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624033738061:android:cb530d5c7c0a01d5365b04",
+        "android_client_info": {
+          "package_name": "com.example.studygroup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624033738061-4thbadju00vl61jvmro11glderiedbek.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.studygroup",
+            "certificate_hash": "2dc13571c2a389b1250dffd74cd1940635e84a27"
+          }
+        },
+        {
+          "client_id": "624033738061-veof2oen1m34ov1q0gtkeq3e2r5arrvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoSgExlq4KLhpf63jZLl5fIJh5iyMDCEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624033738061-veof2oen1m34ov1q0gtkeq3e2r5arrvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
