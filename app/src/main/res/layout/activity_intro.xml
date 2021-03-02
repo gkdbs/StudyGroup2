@@ -30,6 +30,7 @@
             android:textColor="#FFBB00"
             android:textSize="40sp"
             android:layout_marginTop="20dp"/>
+
         <Button
             android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
@@ -40,8 +41,16 @@
             android:textColor="#D1B2FF"
             android:layout_gravity="center"
             android:onClick="click_intro_login"/>
-
-
+        <Button
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="매인화면"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#D1B2FF"
+            android:layout_gravity="center"
+            android:onClick="click_intro_Main"/>
 
     </LinearLayout>
 

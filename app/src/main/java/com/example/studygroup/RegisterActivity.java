@@ -15,12 +15,14 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-//https://youngest-programming.tistory.com/93 여기서 보고하자
+
 public class RegisterActivity extends AppCompatActivity {
-    private EditText et_id, et_pass, et_name, et_age,et_passck;
+    private EditText et_id, et_pass, et_name;
     private Button btn_register,validateButton;
     private AlertDialog dialog;
     private boolean validate=false;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         et_id=findViewById(R.id.et_id);
         et_pass=findViewById(R.id.et_pass);
         et_name=findViewById(R.id.et_name);
-        et_age=findViewById(R.id.et_age);
-        et_passck=findViewById(R.id.et_passcheck);
         validateButton=findViewById(R.id.validateButton);
-
-        btn_register=findViewById(R.id.btn_register);
-
-
-
-
         validateButton.setOnClickListener(new View.OnClickListener() {//id중복체크
             @Override
             public void onClick(View view) {
@@ -90,6 +84,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+
+        btn_register=findViewById(R.id.btn_register);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,8 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String userID=et_id.getText().toString();
                 final String userPass=et_pass.getText().toString();
                 String userName=et_name.getText().toString();
-                int userAge=Integer.parseInt(et_age.getText().toString());
-                final String PassCheck=et_passck.getText().toString();
+
 
                 Response.Listener<String> responseListener=new Response.Listener<String>() {//volley
                     @Override
@@ -106,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             JSONObject jasonObject=new JSONObject(response);//Register2 php에 response
                             boolean success=jasonObject.getBoolean("success");//Register2 php에 sucess
-                            if(userPass.equals(PassCheck)) {
+                            if(userPass.equals(et_pass)) {
                                 if (success) {//회원등록 성공한 경우
                                     Toast.makeText(getApplicationContext(), "회원 등록 성공", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(RegisterActivity.this, login.class);
@@ -123,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
                 //서버로 volley를 이용해서 요청을 함
-                RegisterRequest registerRequest=new RegisterRequest(userID,userPass, userName, userAge,responseListener);
+                RegisterRequest registerRequest=new RegisterRequest(userID,userPass, userName,responseListener);
                 RequestQueue queue= Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
             }

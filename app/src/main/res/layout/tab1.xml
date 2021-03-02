@@ -39,7 +39,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:src="@drawable/ic_baseline_dehaze_24"
+                android:src="@drawable/ic_menu"
                 android:onClick="click_dehaze"/>
 
             <LinearLayout

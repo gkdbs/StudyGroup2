@@ -33,7 +33,7 @@
                 android:layout_marginTop="30dp"
                 android:ems="10"
                 android:hint="  Email"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:background="@drawable/bg_gray"/>
             <Button
                 android:id="@+id/validateButton"
@@ -57,7 +57,7 @@
             android:background="@drawable/bg_gray"/>
 
         <EditText
-            android:id="@+id/et_passcheck"
+            android:id="@+id/et_Passcheck"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="20dp"
@@ -93,18 +93,6 @@
             android:hint="  이름"
             android:inputType="textPersonName"
             android:background="@drawable/bg_gray"/>
-
-
-        <EditText
-            android:id="@+id/et_age"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="  나이"
-            android:inputType="textPersonName"
-            android:background="@drawable/bg_gray"/>
-
 
         <Button
             android:id="@+id/btn_register"

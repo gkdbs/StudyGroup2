@@ -10,17 +10,16 @@ import java.util.Map;
 public class RegisterRequest extends StringRequest {
 
     //서버 url 설정(php파일 연동)
-    final static  private String URL="http://gkdbs514.dothome.co.kr/register.php";
+    final static  private String URL="http://gkdbs514.dothome.co.kr/Register2.php";
     private Map<String,String>map;
 
-    public RegisterRequest(String userID, String userPassword, String userName, int userAge, Response.Listener<String> listener){
+    public RegisterRequest(String userID, String userPassword, String userName, Response.Listener<String> listener){
         super(Method.POST,URL,listener,null);//위 url에 post방식으로 값을 전송
 
         map=new HashMap<>();
         map.put("userID",userID);
         map.put("userPassword",userPassword);
         map.put("userName",userName);
-        map.put("userAge",userAge+"");
     }
 
     @Override

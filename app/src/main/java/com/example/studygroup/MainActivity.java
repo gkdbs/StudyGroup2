@@ -2,11 +2,16 @@ package com.example.studygroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,6 +24,8 @@ import com.kakao.util.maps.helper.Utility;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    DrawerLayout drawerLayout;
 
     BottomNavigationView bnv;
 
@@ -33,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+
 
         String keyHash = Utility.getKeyHash(this);
 
@@ -94,7 +104,72 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
 
+    public static void openDrawer(DrawerLayout drawerLayout){
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void ClickLogo(View view){
+        closeDrawer(drawerLayout);
+    }
+
+    public static void closeDrawer(DrawerLayout drawerLayout){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+    public void ClickHome(View view){
+        recreate();
+    }
+
+    public void ClickDashboard(View view){
+        redirectActivity(this,Dashboard.class);
+    }
+
+    public void ClickAboutUs(View view){
+        redirectActivity(this,AboutUs.class);
+    }
+
+    public void ClickLogout(View view){
+        ClickLogout(drawerLayout);
+    }
+    public static void logout(Activity activity){
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Logout");
+        builder.setMessage("정말 로그아웃 하시겠습니까?");
+        builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                activity.finishAffinity();
+                System.exit(0);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.show();
+
+    }
+
+    public static void redirectActivity(Activity activity, Class aClass){
+        Intent intent = new Intent(activity,aClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout);
+    }
 
     public void clickPrev(View view) {
         int index = Pager.getCurrentItem() - 1;
@@ -106,19 +181,4 @@ public class MainActivity extends AppCompatActivity {
         Pager.setCurrentItem(index, true);
     }
 
-    public void click_dehaze(View view) {
-
-    }
-
-    public void click_dropdown(View view) {
-
-    }
-
-    public void click_search(View view) {
-        startActivity(new Intent(this,Searchbtn.class));
-    }
-
-    public void click_place_btn(View view) {
-        startActivity(new Intent(this,KakaoMap.class));
-    }
 }
