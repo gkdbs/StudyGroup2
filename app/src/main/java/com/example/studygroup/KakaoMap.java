@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kakao.util.maps.helper.Utility;
+import com.kakao.sdk.common.util.Utility;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
@@ -27,7 +27,7 @@ public class KakaoMap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kakao_map);
 
-        String keyHash= Utility.getKeyHash(this);
+        String keyHash = Utility.INSTANCE.getKeyHash(this);
         Log.i("KEY", keyHash);
 
         mapView= new MapView(this);

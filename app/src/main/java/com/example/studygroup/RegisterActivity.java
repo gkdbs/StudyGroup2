@@ -2,6 +2,7 @@ package com.example.studygroup;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +13,15 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.ActionCodeSettings;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-//https://youngest-programming.tistory.com/93 여기서 보고하자
+
 public class RegisterActivity extends AppCompatActivity {
-    private EditText et_id, et_pass, et_name, et_age,et_passck;
-    private Button btn_register,validateButton;
-    private AlertDialog dialog;
+    EditText et_id, et_pass, et_name, et_age,et_passck;
+    Button btn_register,validateButton;
+    AlertDialog dialog;
     private boolean validate=false;
 
     @Override
@@ -31,14 +33,8 @@ public class RegisterActivity extends AppCompatActivity {
         et_pass=findViewById(R.id.et_pass);
         et_name=findViewById(R.id.et_name);
         et_age=findViewById(R.id.et_age);
-        et_passck=findViewById(R.id.et_passcheck);
+        et_passck=findViewById(R.id.et_passck);
         validateButton=findViewById(R.id.validateButton);
-
-        btn_register=findViewById(R.id.btn_register);
-
-
-
-
         validateButton.setOnClickListener(new View.OnClickListener() {//id중복체크
             @Override
             public void onClick(View view) {
@@ -90,6 +86,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+
+        btn_register=findViewById(R.id.btn_register);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String userPass=et_pass.getText().toString();
                 String userName=et_name.getText().toString();
                 int userAge=Integer.parseInt(et_age.getText().toString());
-                final String PassCheck=et_passck.getText().toString();
+                final String PassCk=et_passck.getText().toString();
 
                 Response.Listener<String> responseListener=new Response.Listener<String>() {//volley
                     @Override
@@ -106,10 +104,10 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             JSONObject jasonObject=new JSONObject(response);//Register2 php에 response
                             boolean success=jasonObject.getBoolean("success");//Register2 php에 sucess
-                            if(userPass.equals(PassCheck)) {
+                            if(userPass.equals(PassCk)) {
                                 if (success) {//회원등록 성공한 경우
                                     Toast.makeText(getApplicationContext(), "회원 등록 성공", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(RegisterActivity.this, login.class);
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                     startActivity(intent);
                                 }
                             }
@@ -128,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                 queue.add(registerRequest);
             }
         });
+
     }
 
 }

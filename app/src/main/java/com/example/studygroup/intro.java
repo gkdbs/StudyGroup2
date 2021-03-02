@@ -15,7 +15,7 @@ public class intro extends AppCompatActivity {
     }
 
     public void click_intro_login(View view) {
-        startActivity(new Intent(this,login.class));
+        startActivity(new Intent(this,LoginActivity.class));
         finish();
     }
 

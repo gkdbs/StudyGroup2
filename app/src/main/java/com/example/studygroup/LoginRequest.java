@@ -10,15 +10,15 @@ import java.util.Map;
 public class LoginRequest extends StringRequest {
 
     //서버 url 설정(php파일 연동)
-    final static private String URL = "http://gkdbs514.dothome.co.kr/studygrouplogin.php";
-    private Map<String, String> map;
+    final static  private String URL="http://gkdbs514.dothome.co.kr/studygrouplogin.php";
+    private Map<String,String>map;
 
-    public LoginRequest(String userID, String userPassword, Response.Listener<String> listener) {
-        super(Method.POST, URL, listener, null);
+    public LoginRequest(String userID, String userPassword, Response.Listener<String>listener){
+        super(Method.POST,URL,listener,null);
 
-        map = new HashMap<>();
-        map.put("userID", userID);
-        map.put("userPassword", userPassword);
+        map=new HashMap<>();
+        map.put("userID",userID);
+        map.put("userPassword",userPassword);
 
     }
 

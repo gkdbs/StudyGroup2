@@ -9,13 +9,13 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="@drawable/ic_baseline_search_24"/>
+        android:src="@drawable/newyork"/>
 
     <EditText
         android:id="@+id/et_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="이메일/아이디 입력"
+        android:hint="이메일/아이디 입력"
         android:textColor="#cccccc"
         android:inputType="textPersonName"
         android:ems="10" />
@@ -24,9 +24,9 @@
         android:id="@+id/et_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="비밀번호입력"
+        android:hint="비밀번호입력"
         android:textColor="#cccccc"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:ems="20"/>
 
     <Button
@@ -55,6 +55,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -62,11 +63,11 @@
         android:layout_marginBottom="20dp"/>
 
     <ImageButton
+        android:id="@+id/kakaologin_btn"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:onClick="click_kakaoLogin"
         android:src="@drawable/kakao_login_medium_wide" />
 
 </LinearLayout>
