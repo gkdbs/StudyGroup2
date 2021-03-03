@@ -23,6 +23,14 @@ public class MyAdapter extends PagerAdapter {
         this.imgIds= imgIds;
     }
 
+    public MyAdapter(Context context) {
+        this.context = context;
+    }
+
+    public MyAdapter(art context, ArrayList<Item> items) {
+
+    }
+
     //이 아답터가 만들 페이지의 개수
     @Override
     public int getCount() {

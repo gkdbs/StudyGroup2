@@ -30,17 +30,17 @@
             android:textColor="#FFBB00"
             android:textSize="40sp"
             android:layout_marginTop="20dp"/>
+
         <Button
             android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그인하기"
+            android:text="메뉴화면보기"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#D1B2FF"
             android:layout_gravity="center"
-            android:onClick="click_intro_login"/>
-
+            android:onClick="click_menu"/>
 
 
     </LinearLayout>

@@ -2,154 +2,52 @@ package com.example.studygroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
+import com.kakao.sdk.auth.LoginClient;
+import com.kakao.sdk.auth.model.OAuthToken;
+import com.kakao.sdk.user.UserApiClient;
+import com.kakao.sdk.user.model.User;
 
 import java.util.ArrayList;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function2;
+
 public class MainActivity extends AppCompatActivity {
 
-
-
-    NavigationView.OnNavigationItemSelectedListener,FragmentCallback {
-
-        // 프레임레이아웃 안에다가 프래그먼트 추가할려고
-        Fragmentdrawer_1 f1;
-        Fragment7_2 f2;
-        Fragment7_3 f3;
-
-        Toolbar toolbar;
-
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity7_main);
-
-            toolbar = findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);  // 화면에 툴바를 설정 할려면! 꼭 넣주기
-
-
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-            drawer.addDrawerListener(toggle);
-            toggle.syncState();
-
-            NavigationView navigationView = findViewById(R.id.nav_view);
-            navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
-            // 프래그먼트 생성
-            f1 = new Fragment7_1();
-            f2 = new Fragment7_2();
-            f3 = new Fragment7_3();
-            // 프래임레이아웃에 프래그먼트 추가하는 방법
-            getSupportFragmentManager().beginTransaction().add(R.id.container, f1).commit();
-
-
-        }
-
-        // 이거 인터페이스 만들어서 사용함
-        @Override
-        public void onFragmentSelected(int position, Bundle bundle) {
-            Fragment curenFragment =null;
-            if(position == 0){
-                curenFragment = f1;
-                toolbar.setTitle("첫번째 화면");
-            }else if(position ==1){
-                curenFragment =f2;
-                toolbar.setTitle("두번째 화면");
-            }else if(position ==2){
-                curenFragment = f3;
-                toolbar.setTitle("셋번째 화면");
-            }
-            // 지정한 걸로 화면 보여줄려고 한다면!!
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, curenFragment).commit();
-        }
-
-        @Override
-        public void onBackPressed() {
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            } else {
-                super.onBackPressed();
-            }
-        }
-
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.activity7, menu);
-            return true;
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
-            int id = item.getItemId();
-
-            //noinspection SimplifiableIfStatement
-            if (id == R.id.action_settings) {
-                return true;
-            }
-
-            return super.onOptionsItemSelected(item);
-        }
-
-        @SuppressWarnings("StatementWithEmptyBody")
-        @Override
-        public boolean onNavigationItemSelected(MenuItem item) {
-            int id = item.getItemId();
-
-            if (id == R.id.nav_0) {
-                Toast.makeText(this,"첫번째11",Toast.LENGTH_LONG).show();
-                onFragmentSelected(0,null);
-            } else if (id == R.id.nav_1) {
-                Toast.makeText(this,"두번째22",Toast.LENGTH_LONG).show();
-                onFragmentSelected(1,null);
-            } else if (id == R.id.nav_2) {
-                Toast.makeText(this,"셋번째33",Toast.LENGTH_LONG).show();
-                onFragmentSelected(2,null);
-            } else if (id == R.id.xxxx1) {
-                // 확인 할려고( 어떻게 나오는지 )
-            } else if (id == R.id.xxxx2) {
-                // 확인 할려고( 어떻게 나오는지 )
-            }
-
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
-        }
-    }
-
-    ArrayList<Integer> imgIds = new ArrayList<Integer>();
+    RecyclerView recyclerView;
+    DrawerLayout drawerLayout;
+    ArrayList<Integer> imgIds= new ArrayList<Integer>();
     MyAdapter adapter;
     ViewPager Pager;
 
     BottomNavigationView bnv;
     FragmentManager fragmentManager;
-    Fragment[] fragments = new Fragment[4];
+    Fragment[] fragments= new Fragment[4];
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
         imgIds.add(R.drawable.studygroup01);
         imgIds.add(R.drawable.studygroup02);
@@ -158,18 +56,19 @@ public class MainActivity extends AppCompatActivity {
         imgIds.add(R.drawable.studygroup05);
 
 
-        Pager = findViewById(R.id.pager);
-        adapter = new MyAdapter(this, imgIds);
+
+        Pager= findViewById(R.id.pager);
+        adapter= new MyAdapter(this, imgIds);
         Pager.setAdapter(adapter);
 
-        fragments[0] = new Tab1Fragment();
-        fragments[1] = new Tab2Fragment();
-        fragments[2] = new Tab3Fragment();
-        fragments[3] = new Tab3Fragment();
+        fragments[0]= new Tab1Fragment();
+        fragments[1]= new Tab2Fragment();
+        fragments[2]= new Tab3Fragment();
+        fragments[3]= new Tab3Fragment();
 
-        fragmentManager = getSupportFragmentManager();
+        fragmentManager= getSupportFragmentManager();
 
-        FragmentTransaction tran = fragmentManager.beginTransaction();
+        FragmentTransaction tran= fragmentManager.beginTransaction();
         tran.add(R.id.container, fragments[0]);
         tran.add(R.id.container, fragments[1]);
         tran.add(R.id.container, fragments[2]);
@@ -180,14 +79,14 @@ public class MainActivity extends AppCompatActivity {
         tran.hide(fragments[3]);
         tran.commit();
 
-        bnv = findViewById(R.id.bnv);
+        bnv= findViewById(R.id.bnv);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                FragmentTransaction tran = fragmentManager.beginTransaction();
+                FragmentTransaction tran= fragmentManager.beginTransaction();
 
-                switch (item.getItemId()) {
+                switch (item.getItemId()){
                     case R.id.bnv_home:
                         tran.show(fragments[0]);
                         tran.hide(fragments[1]);
@@ -225,33 +124,144 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        drawerLayout = findViewById(R.id.drawer_layout);
+        }
+        public void ClickMenu(View view){
+            openDrawer(drawerLayout);
+        }
 
+        public static void openDrawer(DrawerLayout drawerLayout){
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
+
+        public void ClickLogo(View view){
+            closeDrawer(drawerLayout);
+        }
+
+        public static void closeDrawer(DrawerLayout drawerLayout){
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        }
+        public void ClickHome(View view){
+            recreate();
+        }
+
+        public void ClickDashboard(View view){
+            redirectActivity(this,Dashboard.class);
+        }
+
+        public void ClickAboutUs(View view){
+            redirectActivity(this,AboutUs.class);
+        }
+
+        public void ClickLogout(View view){
+            logout(this);
+        }
+
+        //public void ClickLogout(View view){
+        //  ClickLogout(drawerLayout);
+        //}
+
+
+    public void clickLogin(View view) {
+        //카카오 계정으로 로그인하기
+        LoginClient.getInstance().loginWithKakaoAccount(this, new Function2<OAuthToken, Throwable, Unit>() {
+            @Override
+            public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
+                if (oAuthToken != null) {//로그인 정보객체가 있다면
+                    Toast.makeText(MainActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                    //로그인한 계정 정보 얻어오기
+                    UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
+                        @Override
+                        public Unit invoke(User user, Throwable throwable) {
+
+                            if (user != null) {
+                                long id = user.getId(); //카카오 회원번호
+
+                                //필수동의 항목의 회원프로필 정보 [닉네임/프로필 이미지 Url]
+                                String nickname = user.getKakaoAccount().getProfile().getNickname();
+                                String profileImageUrl = user.getKakaoAccount().getProfile().getThumbnailImageUrl();
+
+                                //선택항목으로 지정한 Email
+                                String email = user.getKakaoAccount().getEmail();
+
+                                //다음에 접속할때 로그인 다시 하지 않으려면 shardPreference에 로그인정보를 저장해두고 불러오도록 코드 추가..
+
+
+                            } else {
+                                Toast.makeText(MainActivity.this, "사용자 정보 요청 실패 : ", Toast.LENGTH_SHORT).show();
+                            }
+
+                            return null;
+                        }
+                    });
+                } else {
+                    Toast.makeText(MainActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
+                }
+
+                return null;
+            }
+        });
     }
 
 
+    public static void logout(Activity activity){
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            builder.setTitle("Logout");
+            builder.setMessage("정말 로그아웃 하시겠습니까?");
+            builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    activity.finishAffinity();
+                    System.exit(0);
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            builder.show();
+
+        }
+
+        public static void redirectActivity(Activity activity, Class aClass){
+            Intent intent = new Intent(activity,aClass);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            activity.startActivity(intent);
+        }
+
+        @Override
+        protected void onPause() {
+            super.onPause();
+            closeDrawer(drawerLayout);
+        }
+
     public void clickPrev(View view) {
-        int index = Pager.getCurrentItem() - 1;
-        Pager.setCurrentItem(index, true);
+        int index= Pager.getCurrentItem()-1;
+        Pager.setCurrentItem(index,true);
     }
 
     public void clickNext(View view) {
-        int index = Pager.getCurrentItem() + 1;
+        int index= Pager.getCurrentItem()+1;
         Pager.setCurrentItem(index, true);
     }
 
-    public void click_dehaze(View view) {
-        startActivity(new Intent(this,DrawerLayout.class));
+    public void clickbtn_art(View view) {
+        startActivity(new Intent(this,art.class));
     }
 
-    public void click_dropdown(View view) {
-
+    public void clickLinear(View view) {
+        LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
-    public void click_search(View view) {
-        startActivity(new Intent(this,Searchbtn.class));
-    }
-
-    public void clickplace(View view) {
-        startActivity(new Intent(this,KakaoMap.class));
+    public void clickGrid(View view) {
+        GridLayoutManager layoutManager= new GridLayoutManager(this, 2);//2칸짜리 격자배치
+        recyclerView.setLayoutManager(layoutManager);
     }
 }

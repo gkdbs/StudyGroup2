@@ -63,11 +63,14 @@
         android:layout_marginBottom="20dp"/>
 
     <ImageButton
-        android:id="@+id/kakaologin_btn"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/kakao_login_medium_wide"
+        android:background="@android:color/transparent"
         android:layout_gravity="center"
-        android:src="@drawable/kakao_login_medium_wide" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:onClick="clickLogin"/>
 
 </LinearLayout>

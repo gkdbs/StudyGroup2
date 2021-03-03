@@ -1,108 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <RelativeLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/toolbar_RL"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="?actionBarSize"
+        android:background="@color/purple_500">
         <ImageView
-            android:id="@+id/iv_hamburger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="ClickMenu"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_baseline_dehaze_24"
-            android:onClick="click_dehaze"/>
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_menu"/>
 
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:id="@+id/tv_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#000"
-                android:gravity="center"
-                android:text="주소" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:src="@drawable/ic_baseline_arrow_drop_down_circle_24"
-                android:onClick="click_dropdown"/>
-
-        </LinearLayout>
+            android:layout_weight="1"
+            android:text="StudyGroup"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
 
         <ImageView
-            android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_search_24"
             android:layout_alignParentEnd="true"
+            android:onClick="ClickMenu"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:onClick="click_search"/>
-        <ImageView
-            android:id="@+id/place"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_place_24"
-            android:layout_toLeftOf="@+id/search"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:onClick="clickplace"/>
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_more"/>
 
     </RelativeLayout>
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/constraintLayout"/>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/constraintLayout">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_RL">
 
-        <Button
-            android:layout_width="10dp"
-            android:layout_height="20dp"
-            android:layout_weight="1"
-            android:background="#00000000"
-            android:onClick="clickPrev"/>
-        <Button
-            android:layout_width="10dp"
-            android:layout_height="20dp"
-            android:layout_weight="1"
-            android:background="#00000000"
-            android:onClick="clickNext"/>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/constraintLayout">
+
+            <Button
+                android:layout_width="10dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:onClick="clickPrev"/>
+            <Button
+                android:layout_width="10dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:text="next>>"
+                android:textColor="@color/black"
+                android:onClick="clickNext"/>
+            </LinearLayout>
+        </androidx.viewpager.widget.ViewPager>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="예체능학원 보러가기"
+                android:onClick="clickbtn_art"/>
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="100dp"
+                android:text="종합학원
+                보러가기"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:onClick="clickbnt_study"/>
+        </LinearLayout>
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-    </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv"
@@ -112,49 +106,7 @@
         app:itemIconSize="24dp"
         app:labelVisibilityMode="labeled"
         android:layout_alignParentBottom="true"/>
-
-
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
-
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"/>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <FrameLayout
-            android:id="@+id/container2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        </FrameLayout>
-
-
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/drawerlayout"
-            app:menu="@menu/activity_main_drawer" />
-
-    </androidx.drawerlayout.widget.DrawerLayout>
 </RelativeLayout>
+
+
+

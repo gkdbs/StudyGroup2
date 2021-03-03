@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+    <item android:id="@+id/menu_kk"
+        android:title="kk"
+        android:icon="@mipmap/ic_launcher"/>
+    <item android:id="@+id/menu_ss"
+        android:title="ss"
+        android:icon="@mipmap/ic_launcher"/>
+    </group>
+</menu>

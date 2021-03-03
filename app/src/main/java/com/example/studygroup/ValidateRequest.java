@@ -25,3 +25,4 @@ public class ValidateRequest extends StringRequest {
         return map;
     }
 }
+//arrowback,favorite,home,notification,place,baskey

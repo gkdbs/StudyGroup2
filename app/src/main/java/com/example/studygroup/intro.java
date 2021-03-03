@@ -14,9 +14,10 @@ public class intro extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
     }
 
-    public void click_intro_login(View view) {
-        startActivity(new Intent(this,LoginActivity.class));
+
+
+    public void click_menu(View view) {
+        startActivity(new Intent(this,MainActivity.class));
         finish();
     }
-
 }
