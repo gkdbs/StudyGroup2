@@ -32,6 +32,7 @@
             android:layout_marginTop="20dp"/>
 
         <Button
+            android:id="@+id/btn_Mainmenu"
             android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,8 +40,18 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#D1B2FF"
-            android:layout_gravity="center"
-            android:onClick="click_menu"/>
+            android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/btn_Loginmenu"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인하기"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#D1B2FF"
+            android:layout_gravity="center"/>
+
 
 
     </LinearLayout>

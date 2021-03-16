@@ -5,19 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class intro extends AppCompatActivity {
+    Button btn_login,btn_mainmenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+
+        btn_mainmenu = findViewById(R.id.btn_Mainmenu);
+        btn_login = findViewById(R.id.btn_Mainmenu);
+
     }
-
-
-
-    public void click_menu(View view) {
-        startActivity(new Intent(this,MainActivity.class));
-        finish();
-    }
+    View.OnClickListener
 }

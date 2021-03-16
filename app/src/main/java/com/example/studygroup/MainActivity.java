@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager= getSupportFragmentManager();
 
         FragmentTransaction tran= fragmentManager.beginTransaction();
-        tran.add(R.id.container, fragments[0]);
-        tran.add(R.id.container, fragments[1]);
-        tran.add(R.id.container, fragments[2]);
-        tran.add(R.id.container, fragments[3]);
+        tran.add(R.id.map_container, fragments[0]);
+        tran.add(R.id.map_container, fragments[1]);
+        tran.add(R.id.map_container, fragments[2]);
+        tran.add(R.id.map_container, fragments[3]);
         tran.show(fragments[0]);
         tran.hide(fragments[1]);
         tran.hide(fragments[2]);
