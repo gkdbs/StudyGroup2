@@ -15,9 +15,10 @@ public class intro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        btn_mainmenu = findViewById(R.id.btn_Mainmenu);
-        btn_login = findViewById(R.id.btn_Mainmenu);
-
     }
-    View.OnClickListener
+
+    public void introLogin(View view) {
+        startActivity( new Intent(this, LoginActivity.class) );
+        finish();
+    }
 }

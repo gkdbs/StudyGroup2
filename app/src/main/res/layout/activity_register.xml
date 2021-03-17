@@ -37,9 +37,9 @@
 
             <Button
                 android:id="@+id/validateButton"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="24dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="28dp"
                 android:text="중복확인" />
         </LinearLayout>
