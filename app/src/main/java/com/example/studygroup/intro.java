@@ -17,8 +17,10 @@ public class intro extends AppCompatActivity {
 
     }
 
-    public void introLogin(View view) {
-        startActivity( new Intent(this, LoginActivity.class) );
+
+
+    public void menuLogin(View view) {
+        startActivity( new Intent(this, MainActivity.class) );
         finish();
     }
 }

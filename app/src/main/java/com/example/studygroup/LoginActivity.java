@@ -159,4 +159,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    public void clickmenu(View view) {
+        startActivity( new Intent(this, MainActivity.class) );
+        finish();
+    }
 }
